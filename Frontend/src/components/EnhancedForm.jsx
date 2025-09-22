@@ -121,10 +121,10 @@ const EnhancedForm = () => {
   };
 
   return (
-    <div className="min-h-screen p-4 md:p-8 flex items-center justify-center">
+    <div className="p-2 md:p-4 flex items-center justify-center -mt-4">
       <div className="relative w-full max-w-md mx-auto">
         <div className="relative backdrop-blur-xl bg-white/10 border border-white/20 rounded-3xl shadow-2xl shadow-black/20 overflow-hidden">
-          <div className="absolute inset-0 rounded-3xl overflow-hidden">
+          <div className="absolute inset-0 rounded-3xl overflow-hidden hidden md:block">
             <div className="absolute inset-0 bg-gradient-to-r from-purple-500/20 via-blue-500/20 to-cyan-500/20 animate-pulse"></div>
             <div className="absolute inset-[1px] rounded-3xl bg-gradient-to-br from-slate-900/50 via-slate-800/30 to-slate-900/50 backdrop-blur-xl"></div>
           </div>

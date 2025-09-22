@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import * as THREE from 'three';
 import { BloomEffect, EffectComposer, EffectPass, RenderPass, SMAAEffect, SMAAPreset } from 'postprocessing';
 import { Link } from "react-router-dom";
@@ -47,6 +47,7 @@ const Hyperspeed = ({
 }) => {
   const hyperspeed = useRef(null);
   const appRef = useRef(null);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     if (appRef.current) {
@@ -1124,22 +1125,44 @@ const Hyperspeed = ({
       {/* Navbar - stays above everything */}
       {/* Navbar - Rounded pill style */}
 {/* Navbar with image logo */}
-<nav className="fixed top-6 left-1/2 transform -translate-x-1/2 z-50 bg-gray-900/80 backdrop-blur-sm border border-gray-700/50 rounded-full px-8 py-4">
-  <div className="flex items-center justify-between min-w-[400px]">
+<nav className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 
+                bg-gray-900/80 backdrop-blur-sm border border-gray-700/50 
+                rounded-full px-6 py-3 w-[90%] max-w-5xl">
+  <div className="flex items-center justify-between">
+    {/* Logo + Title */}
     <div className="flex items-center space-x-3 text-white">
-      <img 
-        src="./siggraph-logo.png" 
-        alt="Siggraph BNMIT Logo" 
-        className="w-8 h-8 rounded-lg object-cover"
+      <img
+        src="./siggraph-logo.png"
+        alt="Siggraph BNMIT Logo"
+        className="w-6 h-6 rounded-lg object-contain"
       />
-      <span className="text-lg font-medium">Siggraph BNMIT</span>
+      <span className="text-lg font-medium whitespace-nowrap">Siggraph BNMIT</span>
     </div>
-    <div className="flex space-x-8">
+
+    {/* Desktop Links */}
+    <div className="hidden md:flex space-x-8">
       <a href="#" className="text-gray-300 hover:text-white transition-colors">Home</a>
-      <a href="#" className="text-gray-300 hover:text-white transition-colors">Docs</a>
+      <a href="#" className="text-gray-300 hover:text-white transition-colors">Join</a>
+    </div>
+
+    {/* Mobile Hamburger */}
+    <div className="md:hidden">
+      <button
+        onClick={() => setMenuOpen(!menuOpen)}
+        className="text-gray-300 hover:text-white focus:outline-none"
+      >
+        ☰
+      </button>
     </div>
   </div>
+
+  {/* Mobile Menu */}
+  <div className={`${menuOpen ? "flex" : "hidden"} flex-col mt-3 space-y-2 md:hidden`}>
+    <a href="#" className="block text-gray-300 hover:text-white transition-colors">Home</a>
+    <a href="#" className="block text-gray-300 hover:text-white transition-colors">Join</a>
+  </div>
 </nav>
+
       {/* Overlay Content */}
      <div className="fixed inset-0 z-30 flex flex-col items-center justify-center text-center text-white pointer-events-none">
   <div className="bg-gray-800/20 backdrop-blur-sm px-4 py-2 rounded-full text-sm mb-8 pointer-events-auto">
